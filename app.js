@@ -10,7 +10,9 @@ const mongoose = require('mongoose');
 
 const expressServer = app.listen(process.env.PORT || 3001);
 
-const io = socketio(expressServer, {cors: {origin: '*'}});
+//, {cors: {origin: '*'}}
+
+const io = socketio(expressServer);
 
 const Game = require('./Models/Game');
 const QuotableAPI = require('./QuotableAPI');
@@ -20,10 +22,10 @@ mongoose.connect('mongodb://localhost:27017/typeandwin', { useNewUrlParser: true
 })
 
 const path = require('path');
-app.use(express.static(path.join(__dirname, 'build')));
+app.use(express.static(path.join(__dirname, 'client', 'build')));
 
 app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+  res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
 })
 
 io.on('connect', (socket) => {
