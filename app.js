@@ -22,6 +22,10 @@ mongoose.connect('mongodb://localhost:27017/typeandwin', { useNewUrlParser: true
 const path = require('path');
 app.use(express.static(path.join(__dirname, 'build')));
 
+app.get('/', function (req, res) {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+})
+
 io.on('connect', (socket) => {
   socket.on('userInput', async ({userInput, gameID}) => {
     try{
