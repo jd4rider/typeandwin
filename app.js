@@ -12,7 +12,7 @@ const expressServer = app.listen(process.env.PORT || 3001);
 
 //, {cors: {origin: '*'}}
 
-const io = socketio(expressServer);
+const io = socketio(expressServer, {cors: {origin: 'https://typeandwin.herokuapp.com/*'}});
 
 const Game = require('./Models/Game');
 const QuotableAPI = require('./QuotableAPI');
