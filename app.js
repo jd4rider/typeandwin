@@ -10,7 +10,7 @@ const mongoose = require('mongoose');
 
 const expressServer = app.listen(process.env.PORT || 3001);
 
-const io = socketio(expressServer);
+const io = socketio(expressServer, {cors: {origin: '*'}});
 
 const Game = require('./Models/Game');
 const QuotableAPI = require('./QuotableAPI');
