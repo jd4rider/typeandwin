@@ -20,7 +20,7 @@ mongoose.connect('mongodb://localhost:27017/typeandwin', { useNewUrlParser: true
 })
 
 const path = require('path');
-app.use(express.static(path.join(__dirname, 'client', 'build')));
+app.use(express.static(path.join(__dirname, 'build')));
 
 io.on('connect', (socket) => {
   socket.on('userInput', async ({userInput, gameID}) => {
